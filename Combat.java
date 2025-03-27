@@ -57,7 +57,7 @@ public class Combat{
 
             System.out.println("What will you do?");
             System.out.println("1. Attack");
-            System.out.println("2. Block");
+            System.out.println("2. Evade");
             //Add an avoid option, forfeiting rewards
 
             //Include an "Invalid Selection"
@@ -79,14 +79,20 @@ public class Combat{
                     System.out.println("You block the enemy attack");
                     break;
             }
-            if (userChoice == 2){
-                System.out.println("You block the attack, taking no damage");
-            }
-            else {
-                System.out.println("The "+enemyName+" attacks you for "+enemyDamage+".");
+            //if (userChoice == 2){
+            //}            //    System.out.println("You block the attack, taking no damage");
+
+            if (userChoice != 2) {
+                System.out.println("The " + enemyName+" attacks you for " + enemyDamage+".");
                 int newCharHealth = (int)(Character.getLife() - enemyDamage);
                 Character.setLife(newCharHealth);
             }
+            else if (userChoice==2){
+                System.out.println("You evade the enemy attack, they only nick you");
+                int newCharHealth = (int)(Character.getLife()-1);
+                Character.setLife(newCharHealth);
+            }
+
 
             if (enemyLife<=0||Character.stats[1]<=0){
                 IN_COMBAT=false;
