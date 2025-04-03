@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Combat{
@@ -5,16 +6,55 @@ public class Combat{
     private static double DAMAGE;
     private static boolean IN_COMBAT =true ;
     private static boolean deathCheck = false;
+    private static boolean evaded = false;
+    private static boolean enemySlain = false;
+
+    public boolean afterCombatChecks(){
+        Scanner  s = new Scanner(System.in);
+        boolean running = true;
+        boolean checkForDeath= Combat.gameOverCheck();
+        boolean evasionCheck = Combat.evadedCheck();
+        boolean slainEnemy = Combat.deadEnemyCheck();
+        if(checkForDeath){
+            running = false;
+        }
+        else if (evasionCheck){
+            System.out.println("You evade the enemy entirely, running out of the room without a fight.");
+            System.out.println("You feel as if you missed out on something by doing so...");
+        }
+        else if (slainEnemy){
+            System.out.println("You survived the attack. Your foe has dropped...");
+            Random rand = new Random();
+            int goldGained = rand.nextInt(1,10);
+            System.out.println("You gained "+goldGained+" gold!");
+            playerCharacter.addGold(goldGained);
+            System.out.println("You feel power pour into you, how will you channel it?");
+            System.out.println("1. Strength");
+            System.out.println("2. Health");
+            int userChoice = s.nextInt();
+            if(userChoice==1){
+                playerCharacter.stats[0]++;
+            }
+            else if (userChoice==2){
+                playerCharacter.stats[1]++;
+            }
+        }
+        return running;
+    }
 
     public static boolean gameOverCheck(){
         return deathCheck;
     }
 
+    public static boolean evadedCheck(){ return evaded;}
+
+    public static boolean deadEnemyCheck(){ return enemySlain;}
+
 
     //combat loop takes in a variable that sets the type of enemy in the fight, then the enemystats class returns the stats using functions such as GoblinLife and KnightLife
     //These stats will be fed into temps variables for the loops
 
-    public void CombatLoop(){
+    public void CombatLoop(int enemyChosen){
 
         Scanner sc = new Scanner(System.in);
 
@@ -23,7 +63,7 @@ public class Combat{
         String enemyName = "Null";
         int userChoice;
 
-        int enemyType = Enemy.getRandomEnemyType();
+        int enemyType = enemyChosen;
 
 
         switch (enemyType){
@@ -54,35 +94,23 @@ public class Combat{
         System.out.println("You come upon a " + enemyName);
 
         do{
-            System.out.println("Testing: " + playerCharacter.getLife() + "..." + enemyLife);
+            //System.out.println("Testing: " + playerCharacter.getLife() + "..." + enemyLife);
             System.out.println("What will you do?");
             System.out.println("1. Attack");
             System.out.println("2. Evade");
-
-
-            //Add an avoid option, forfeiting rewards
 
             //Include an "Invalid Selection"
 
             userChoice = sc.nextInt();
 
-            switch(userChoice){
-
-                case 1:
-                    System.out.println("You attack the "+enemyName+" for "+playerCharacter.attackDamage());
-                    enemyLife= enemyLife-playerCharacter.attackDamage();
-                    if (enemyLife<=0){
-                        IN_COMBAT=false;
-                        return;
-                    }
-                    break;
-
-                case 2:
-                    System.out.println("You block the enemy attack");
-                    break;
-            }
-
             if (userChoice != 2) {
+                System.out.println("You attack the "+enemyName+" for "+playerCharacter.attackDamage());
+                enemyLife= enemyLife-playerCharacter.attackDamage();
+                if (enemyLife<=0){
+                    IN_COMBAT=false;
+                    enemySlain=true;
+                    return;
+                }
                 System.out.println("The " + enemyName+" attacks you for " + enemyDamage+".");
                 int newCharHealth = (int)(playerCharacter.getLife() - enemyDamage);
                 playerCharacter.setLife(newCharHealth);
@@ -94,15 +122,8 @@ public class Combat{
                 }
             }
             else if (userChoice==2){
-                System.out.println("You evade the enemy attack, they only nick you");
-                int newCharHealth = (int)(playerCharacter.getLife()-1);
-                playerCharacter.setLife(newCharHealth);
-                int charLife=(int)playerCharacter.getLife();
-                if (charLife <=0){
-                    IN_COMBAT=false;
-                    deathCheck=true;
-                    return;
-                }
+                evaded=true;
+                IN_COMBAT=false;
             }
 
 

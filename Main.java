@@ -25,18 +25,21 @@ TO DO:
 
 // room type and description is constructed here
 import java.util.Scanner;
+import java.util.Random;
 class Room {
 
     int roomType;
     String Description;
+    int enemyChosen;
 
     Room nextLeft;
     Room nextRight;
     Room nextRoom;
 
-    public Room(int roomType, String Description){
+    public Room(int roomType, String Description, int enemyChosen){
         this.roomType = roomType;
         this.Description = Description;
+        this.enemyChosen = enemyChosen;
     }
 
     public void connectLeft(Room nextLeftRoom){
@@ -71,7 +74,7 @@ class Room {
 
 public class Main {
 
-    //placeholer enemy health
+    //placeholder enemy health
 
     int health;
     public void getEnemy(int enemyHealth){
@@ -79,26 +82,28 @@ public class Main {
     }
 
 
+
+
     public static void main(String[] args) {
         Scanner  s = new Scanner(System.in);
 
         // room type and description is stored here
 
-        Room r1 = new Room(0, "Outside");
-        Room r2 = new Room(0, "Entrance");
-        Room r3 = new Room(1, "Combat 1");
-        Room r4 = new Room(2, "Combat 2");
-        Room r5 = new Room(0, "Puzzle 1");
-        Room r6 = new Room(0, "Combat 3");
-        Room r7 = new Room(0, "");
-        Room r8 = new Room(0, "room description");
-        Room r9 = new Room(0, "room description");
-        Room r10 = new Room(0, "room description");
-        Room r11 = new Room(0, "room description");
-        Room r12 = new Room(0, "room description");
-        Room r13 = new Room(0, "room description");
-        Room r14 = new Room(0, "room description");
-        Room r15 = new Room(0, "room description");
+        Room r1 = new Room(0, "Outside",1);
+        Room r2 = new Room(0, "Entrance",1);
+        Room r3 = new Room(1, "Combat 1",1);
+        Room r4 = new Room(2, "Combat 2",1);
+        Room r5 = new Room(0, "Puzzle 1",1);
+        Room r6 = new Room(0, "Combat 3",1);
+        Room r7 = new Room(0, "",1);
+        Room r8 = new Room(0, "room description",1);
+        Room r9 = new Room(0, "room description",1);
+        Room r10 = new Room(0, "room description",1);
+        Room r11 = new Room(0, "room description",1);
+        Room r12 = new Room(0, "room description",1);
+        Room r13 = new Room(0, "room description",1);
+        Room r14 = new Room(0, "room description",1);
+        Room r15 = new Room(0, "room description",1);
 
         r1.connectRoom(r2);
         r2.connectRoom(r3);
@@ -125,10 +130,10 @@ public class Main {
         r14.connectRoom(r15);
 
 
-
         boolean running = true;
         Room currentRoom;
         int counter = 1;  //counter will keep track of what room we are in
+        Random rand = new Random();
         Combat c1 = new Combat();
         while (running){
             System.out.println("Welcome to the Text-Based RPG\n------------------------------\n\nBegin game: yes/no");
@@ -153,17 +158,15 @@ public class Main {
                     " the rooms torches erupt revealing foe that has come across your path");
             System.out.println(currentRoom.Description);
             System.out.println(counter);
-            c1.CombatLoop();
-            boolean checkForDeath= Combat.gameOverCheck();
-
-            if(checkForDeath){
-                //Enter bad ending text here
-
-                running = false;
+            int enemyChosen = r3.enemyChosen;
+            c1.CombatLoop(enemyChosen);
+            running = c1.afterCombatChecks();
+            if (!running){
+                //Enter game over (death) text here
                 return;
             }
 
-            System.out.println("You survived the attack. Your foe has Dropped .......");
+
             System.out.println("There are two doors on each side of the room. Which way do you go left or right");
             answer = s.nextLine();
             if (answer.equalsIgnoreCase("Left")){
