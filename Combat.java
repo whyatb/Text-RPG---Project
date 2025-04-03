@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class Combat{
 
     private static double DAMAGE;
-    private static boolean IN_COMBAT;
+    private static boolean IN_COMBAT =true ;
     private static boolean deathCheck = false;
 
-    private static boolean gameOverCheck(){
+    public static boolean gameOverCheck(){
         return deathCheck;
     }
 
@@ -54,10 +54,12 @@ public class Combat{
         System.out.println("You come upon a " + enemyName);
 
         do{
-
+            System.out.println("Testing: " + playerCharacter.getLife() + "..." + enemyLife);
             System.out.println("What will you do?");
             System.out.println("1. Attack");
             System.out.println("2. Evade");
+
+
             //Add an avoid option, forfeiting rewards
 
             //Include an "Invalid Selection"
@@ -67,8 +69,8 @@ public class Combat{
             switch(userChoice){
 
                 case 1:
-                    System.out.println("You attack the "+enemyName+" for "+Character.attackDamage());
-                    enemyLife= enemyLife-Character.attackDamage();
+                    System.out.println("You attack the "+enemyName+" for "+playerCharacter.attackDamage());
+                    enemyLife= enemyLife-playerCharacter.attackDamage();
                     if (enemyLife<=0){
                         IN_COMBAT=false;
                         return;
@@ -79,29 +81,33 @@ public class Combat{
                     System.out.println("You block the enemy attack");
                     break;
             }
-            //if (userChoice == 2){
-            //}            //    System.out.println("You block the attack, taking no damage");
 
             if (userChoice != 2) {
                 System.out.println("The " + enemyName+" attacks you for " + enemyDamage+".");
-                int newCharHealth = (int)(Character.getLife() - enemyDamage);
-                Character.setLife(newCharHealth);
+                int newCharHealth = (int)(playerCharacter.getLife() - enemyDamage);
+                playerCharacter.setLife(newCharHealth);
+                int charLife=(int)playerCharacter.getLife();
+                if (charLife <=0){
+                    IN_COMBAT=false;
+                    deathCheck=true;
+                    return;
+                }
             }
             else if (userChoice==2){
                 System.out.println("You evade the enemy attack, they only nick you");
-                int newCharHealth = (int)(Character.getLife()-1);
-                Character.setLife(newCharHealth);
+                int newCharHealth = (int)(playerCharacter.getLife()-1);
+                playerCharacter.setLife(newCharHealth);
+                int charLife=(int)playerCharacter.getLife();
+                if (charLife <=0){
+                    IN_COMBAT=false;
+                    deathCheck=true;
+                    return;
+                }
             }
 
 
-            if (enemyLife<=0||Character.stats[1]<=0){
-                IN_COMBAT=false;
-            }
         }while (IN_COMBAT);
-        int healthCheck;
-        healthCheck = (int)Character.getLife();
-        if (healthCheck <= 0){
-            deathCheck = true;
-        }
+
+
     }
 }

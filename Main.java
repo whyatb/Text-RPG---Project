@@ -24,7 +24,7 @@ TO DO:
 //Navigation menu will read the values of nextRight and nextLeft and if either one is null, then menu will simply have a next-room option, otherwise present a choice
 
 // room type and description is constructed here
-
+import java.util.Scanner;
 class Room {
 
     int roomType;
@@ -51,6 +51,22 @@ class Room {
         this.nextRoom = nextRoom;
     }
 }
+//Idea on how to travel from room to room
+//    public static void roomTraversal(Room startRoom){
+//        Room currentRoom = startRoom;
+//        while(currentRoom !=null){
+//            currentRoom.displayRoomInfo();
+//            currentRoom = currentRoom.nextRoom;
+//        }
+//    }
+
+
+//public void getGameOverCheck(){
+//        gameOverCheck();
+//    }
+//    public static boolean getDeathCheck(){
+//        return deathCheck;
+//    }
 
 
 public class Main {
@@ -64,6 +80,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+        Scanner  s = new Scanner(System.in);
 
         // room type and description is stored here
 
@@ -73,7 +90,7 @@ public class Main {
         Room r4 = new Room(2, "Combat 2");
         Room r5 = new Room(0, "Puzzle 1");
         Room r6 = new Room(0, "Combat 3");
-        Room r7 = new Room(0, "room description");
+        Room r7 = new Room(0, "");
         Room r8 = new Room(0, "room description");
         Room r9 = new Room(0, "room description");
         Room r10 = new Room(0, "room description");
@@ -109,26 +126,60 @@ public class Main {
 
 
 
-
-
-        System.out.println("Welcome to the Text-Based RPG\n------------------------------\n\nBegin game: yes/no");
-
-        boolean playing  = true;
-        String enter = "";
+        boolean running = true;
+        Room currentRoom;
+        int counter = 1;  //counter will keep track of what room we are in
         Combat c1 = new Combat();
+        while (running){
+            System.out.println("Welcome to the Text-Based RPG\n------------------------------\n\nBegin game: yes/no");
+            String answer = s.nextLine();
 
-        while(playing){
-            System.out.println(r1.Description);
-            r1.connectRoom(r2);
-            System.out.println(r2.Description);
-            r2.connectRoom(r3);
-            System.out.println(r3.Description);
-            if(r3.roomType == 1){
-                c1.CombatLoop();
-                System.out.println("hi");
+            if (answer.equalsIgnoreCase("no")){
+                System.out.println("YOU HAVE MISSED OUT ON A GREAT ADVENTURE");
+                running =  false;
+                return;
+            }else{
+                System.out.println("Welcome young traveler you have stumbled upon a mighty castle and enter through its large gate into a well lit room.\n" +
+                        "In this room there is only a door ahead and a large sword laying on the ground.......");
+            }
+            currentRoom = r1.nextRoom;
+            counter++; //Room two
+            System.out.println(currentRoom.Description); // Will have to go into deeper detail when room info is ready
+
+            currentRoom = r2.nextRoom;
+            counter++; //room 3 First combat room
+
+            System.out.println("You enter into a dark room with a cloaked figure at the end. In a Sudden movement " +
+                    " the rooms torches erupt revealing foe that has come across your path");
+            System.out.println(currentRoom.Description);
+            System.out.println(counter);
+            c1.CombatLoop();
+            boolean checkForDeath= Combat.gameOverCheck();
+
+            if(checkForDeath){
+                //Enter bad ending text here
+
+                running = false;
+                return;
             }
 
+            System.out.println("You survived the attack. Your foe has Dropped .......");
+            System.out.println("There are two doors on each side of the room. Which way do you go left or right");
+            answer = s.nextLine();
+            if (answer.equalsIgnoreCase("Left")){
+                currentRoom =  r3.nextLeft;
+                counter++;
+            }else{
+                currentRoom = r3.nextRight;
+                counter+=2;
+
+            }
+            System.out.println(currentRoom.Description +" " +counter);
+
+
+
         }
+
 
 
 
