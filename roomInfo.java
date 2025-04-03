@@ -1,4 +1,4 @@
-public class roomInfo {
+public class  Room {
 
     //Here is the roomInfo attribues or subclasses
     
