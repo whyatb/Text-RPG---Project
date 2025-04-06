@@ -143,7 +143,7 @@ public class Main {
                 System.out.println("YOU HAVE MISSED OUT ON A GREAT ADVENTURE");
                 running =  false;
                 return;
-            }else{
+            }else if (answer.equalsIgnoreCase("yes")){
                 System.out.println("Welcome young traveler you have stumbled upon a mighty castle and enter through its large gate into a well lit room.\n" +
                         "In this room there is only a door ahead and a large sword laying on the ground.......");
             }

@@ -9,7 +9,7 @@ public class playerCharacter {
     private static final String GOLD = "Gold";
 
     // Stats array to store the character's stats values
-    public static double[] stats = {50, 300, 0, 0, 0};
+    private static double[] stats = {50, 300, 0, 0, 30};
 
     // Array to store descriptions for each stat
     private String[] statDescription = {STRENGTH, LIFE, WEAPON_DAMAGE, ARMOR_VALUE, GOLD};

@@ -25,7 +25,7 @@ public class Combat{
         else if (slainEnemy){
             System.out.println("You survived the attack. Your foe has dropped...");
             Random rand = new Random();
-            int goldGained = rand.nextInt(1,10);
+            int goldGained = rand.nextInt(1,11);
             System.out.println("You gained "+goldGained+" gold!");
             playerCharacter.addGold(goldGained);
             System.out.println("You feel power pour into you, how will you channel it?");
@@ -33,10 +33,12 @@ public class Combat{
             System.out.println("2. Health");
             int userChoice = s.nextInt();
             if(userChoice==1){
-                playerCharacter.stats[0]++;
+                double tempStrength = playerCharacter.getStrength()+1;
+                playerCharacter.setStrength(tempStrength);
             }
             else if (userChoice==2){
-                playerCharacter.stats[1]++;
+                double tempLife = playerCharacter.getLife()+1;
+                playerCharacter.setLife(tempLife);
             }
         }
         return running;
