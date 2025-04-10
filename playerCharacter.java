@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class playerCharacter {
     // character stats
 
@@ -13,6 +14,51 @@ public class playerCharacter {
 
     // Array to store descriptions for each stat
     private String[] statDescription = {STRENGTH, LIFE, WEAPON_DAMAGE, ARMOR_VALUE, GOLD};
+
+    public static void gameOverText(int input){
+        switch (input){
+            case 1:
+                System.out.println("Insert combat gameovertext");
+                break;
+            case 2:
+                System.out.println("Inset puzzle gameovertext");
+                break;
+            //Insert more ways to game over as needed
+        }
+    }
+
+    public static void levelUp(){
+        Scanner s = new Scanner(System.in);
+        boolean correctInput=true;
+        do{
+            try{
+                System.out.println("You feel power pour into you, how will you channel it?");
+                System.out.println("1. Strength");
+                System.out.println("2. Health");
+                int userChoice = s.nextInt();
+                if(userChoice==1){
+                    double tempStrength = playerCharacter.getStrength()+1;
+                    playerCharacter.setStrength(tempStrength);
+                    System.out.println("Your Strength has increased by 1 to "+(int)tempStrength);
+                    correctInput=true;
+                }
+                else if (userChoice==2){
+                    double tempLife = playerCharacter.getLife()+1;
+                    playerCharacter.setLife(tempLife);
+                    System.out.println("Your Health has increased by 1 to "+(int)tempLife);
+                    correctInput=true;
+                }
+                else{
+                    System.out.println("Invalid choice, please enter 1 or 2");
+                    correctInput=false;
+                }
+            }catch (Exception e){
+                System.out.println("Invalid input, please enter an integer");
+                correctInput=false;
+                s.nextLine();
+            }
+        }while(!correctInput);
+    }
 
     // Getter methods for the stats
     public static double getStrength() {

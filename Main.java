@@ -148,6 +148,7 @@ public class Main {
                         "In this room there is only a door ahead and a large sword laying on the ground.......");
             }
             currentRoom = r1.nextRoom;
+
             counter++; //Room two
             System.out.println(currentRoom.Description); // Will have to go into deeper detail when room info is ready
 

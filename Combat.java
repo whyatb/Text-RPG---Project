@@ -17,6 +17,7 @@ public class Combat{
         boolean slainEnemy = Combat.deadEnemyCheck();
         if(checkForDeath){
             running = false;
+            playerCharacter.gameOverText(1);
         }
         else if (evasionCheck){
             System.out.println("You evade the enemy entirely, running out of the room without a fight.");
@@ -28,35 +29,8 @@ public class Combat{
             int goldGained = rand.nextInt(1,11);
             System.out.println("You gained "+goldGained+" gold!");
             playerCharacter.addGold(goldGained);
-            boolean correctInput=true;
-            do{
-                try{
-                    System.out.println("You feel power pour into you, how will you channel it?");
-                    System.out.println("1. Strength");
-                    System.out.println("2. Health");
-                    int userChoice = s.nextInt();
-                    if(userChoice==1){
-                        double tempStrength = playerCharacter.getStrength()+1;
-                        playerCharacter.setStrength(tempStrength);
-                        System.out.println("Your Strength has increased by 1 to "+(int)tempStrength);
-                        correctInput=true;
-                    }
-                    else if (userChoice==2){
-                        double tempLife = playerCharacter.getLife()+1;
-                        playerCharacter.setLife(tempLife);
-                        System.out.println("Your Health has increased by 1 to "+(int)tempLife);
-                        correctInput=true;
-                    }
-                    else{
-                        System.out.println("Invalid choice, please enter 1 or 2");
-                        correctInput=false;
-                    }
-                }catch (Exception e){
-                    System.out.println("Invalid input, please enter an integer");
-                    correctInput=false;
-                    s.nextLine();
-                }
-            }while(!correctInput);
+            playerCharacter.levelUp();
+
 
         }
         return running;
