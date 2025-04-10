@@ -28,18 +28,36 @@ public class Combat{
             int goldGained = rand.nextInt(1,11);
             System.out.println("You gained "+goldGained+" gold!");
             playerCharacter.addGold(goldGained);
-            System.out.println("You feel power pour into you, how will you channel it?");
-            System.out.println("1. Strength");
-            System.out.println("2. Health");
-            int userChoice = s.nextInt();
-            if(userChoice==1){
-                double tempStrength = playerCharacter.getStrength()+1;
-                playerCharacter.setStrength(tempStrength);
-            }
-            else if (userChoice==2){
-                double tempLife = playerCharacter.getLife()+1;
-                playerCharacter.setLife(tempLife);
-            }
+            boolean correctInput=true;
+            do{
+                try{
+                    System.out.println("You feel power pour into you, how will you channel it?");
+                    System.out.println("1. Strength");
+                    System.out.println("2. Health");
+                    int userChoice = s.nextInt();
+                    if(userChoice==1){
+                        double tempStrength = playerCharacter.getStrength()+1;
+                        playerCharacter.setStrength(tempStrength);
+                        System.out.println("Your Strength has increased by 1 to "+(int)tempStrength);
+                        correctInput=true;
+                    }
+                    else if (userChoice==2){
+                        double tempLife = playerCharacter.getLife()+1;
+                        playerCharacter.setLife(tempLife);
+                        System.out.println("Your Health has increased by 1 to "+(int)tempLife);
+                        correctInput=true;
+                    }
+                    else{
+                        System.out.println("Invalid choice, please enter 1 or 2");
+                        correctInput=false;
+                    }
+                }catch (Exception e){
+                    System.out.println("Invalid input, please enter an integer");
+                    correctInput=false;
+                    s.nextLine();
+                }
+            }while(!correctInput);
+
         }
         return running;
     }
@@ -97,36 +115,51 @@ public class Combat{
 
         do{
             //System.out.println("Testing: " + playerCharacter.getLife() + "..." + enemyLife);
-            System.out.println("What will you do?");
-            System.out.println("1. Attack");
-            System.out.println("2. Evade");
 
             //Include an "Invalid Selection"
 
-            userChoice = sc.nextInt();
-
-            if (userChoice != 2) {
-                System.out.println("You attack the "+enemyName+" for "+playerCharacter.attackDamage());
-                enemyLife= enemyLife-playerCharacter.attackDamage();
-                if (enemyLife<=0){
-                    IN_COMBAT=false;
-                    enemySlain=true;
-                    return;
+            boolean correctInput=true;
+            do{
+                try{
+                    System.out.println("What will you do?");
+                    System.out.println("1. Attack");
+                    System.out.println("2. Evade");
+                    userChoice = sc.nextInt();
+                    if (userChoice == 1) {
+                        System.out.println("You attack the "+enemyName+" for "+playerCharacter.attackDamage());
+                        enemyLife= enemyLife-playerCharacter.attackDamage();
+                        if (enemyLife<=0){
+                            IN_COMBAT=false;
+                            enemySlain=true;
+                            return;
+                        }
+                        System.out.println("The " + enemyName+" attacks you for " + enemyDamage+".");
+                        int newCharHealth = (int)(playerCharacter.getLife() - enemyDamage);
+                        playerCharacter.setLife(newCharHealth);
+                        int charLife=(int)playerCharacter.getLife();
+                        if (charLife <=0){
+                            IN_COMBAT=false;
+                            deathCheck=true;
+                            return;
+                        }
+                        correctInput=true;
+                    }
+                    else if (userChoice==2){
+                        evaded=true;
+                        IN_COMBAT=false;
+                        correctInput=true;
+                    }
+                    else {
+                        System.out.println("Invalid choice, please enter 1 or 2");
+                        correctInput=false;
+                        sc.nextLine();
+                    }
+                }catch (Exception e){
+                    System.out.println("Invalid input, please enter an integer");
+                    correctInput=false;
+                    sc.nextLine();
                 }
-                System.out.println("The " + enemyName+" attacks you for " + enemyDamage+".");
-                int newCharHealth = (int)(playerCharacter.getLife() - enemyDamage);
-                playerCharacter.setLife(newCharHealth);
-                int charLife=(int)playerCharacter.getLife();
-                if (charLife <=0){
-                    IN_COMBAT=false;
-                    deathCheck=true;
-                    return;
-                }
-            }
-            else if (userChoice==2){
-                evaded=true;
-                IN_COMBAT=false;
-            }
+            }while(!correctInput);
 
 
         }while (IN_COMBAT);
