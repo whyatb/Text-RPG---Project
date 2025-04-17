@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Combat{
 
     private static double DAMAGE;
-    private static boolean IN_COMBAT =true ;
+    private static boolean IN_COMBAT = true ;
     private static boolean deathCheck = false;
     private static boolean evaded = false;
     private static boolean enemySlain = false;

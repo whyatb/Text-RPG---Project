@@ -128,14 +128,110 @@ public class Main {
         r11.connectLeft(r12);
         r12.connectRoom(r14);
         r14.connectRoom(r15);
+    boolean running = true;
+    while (running) {
 
 
-        boolean running = true;
+        for (int i = 0; i <= 14; i++) {
+
+            int weight = (int) (Math.random() * 100);
+            int roomSelect;
+            if (weight < 80) {
+                roomSelect = (int) (Math.random() * 2) + 1;
+            } else {
+                roomSelect = 3;
+            }
+
+            switch (roomSelect) {
+                case 1:
+                    int puzzleRoomSelect = (int) (Math.random() * 5) + 1;
+
+                    System.out.println("Puzzle: " + puzzleRoomSelect);
+
+                    switch (puzzleRoomSelect) {
+                        case 1:
+                            System.out.println("You enter a dimly entered room lit by one torch.\n" +
+                                    "The light's grasp is enough to illuminate another torch on the " +
+                                    "left side of the wall though it’s unlit");
+                            System.out.println("1. Light the other torch");
+                            System.out.println("2. Leave");
+                            int puzzleMenu = s.nextInt();
+
+                            if (puzzleMenu == 1) {
+                                System.out.println("You pick up the torch and light the other torch with it.\n" +
+                                        "Then you bring back the torch to its original position.\n" +
+                                        "With both torches illuminated in view you notice that the torch you just lit has a different holder");
+                            } else {
+                                System.out.println("You head down the stairs");
+                            }
+
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                    }
+                    break;
+
+                case 2:
+                    int combatRoomSelect = (int) (Math.random() * 7) + 1;
+
+                    System.out.println("Combat: " + combatRoomSelect);
+
+                    switch (combatRoomSelect) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+
+                            Combat c1 = new Combat();
+                            c1.CombatLoop(1);
+
+                            if (!running){
+                                //Enter game over (death) text here
+                                return;
+                            }
+
+
+
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                    }
+
+
+                    break;
+
+                case 3:
+                    System.out.println("TRADER");
+                    break;
+            }
+
+
+        }
+
+
+    }
+
+       /* boolean running = true;
         Room currentRoom;
         int counter = 1;  //counter will keep track of what room we are in
         Random rand = new Random();
         Combat c1 = new Combat();
+
         while (running){
+
             System.out.println("Welcome to the Text-Based RPG\n------------------------------\n\nBegin game: yes/no");
             String answer = s.nextLine();
 
@@ -159,9 +255,11 @@ public class Main {
                     " the rooms torches erupt revealing foe that has come across your path");
             System.out.println(currentRoom.Description);
             System.out.println(counter);
+
             int enemyChosen = r3.enemyChosen;
             c1.CombatLoop(enemyChosen);
             running = c1.afterCombatChecks();
+
             if (!running){
                 //Enter game over (death) text here
                 return;
@@ -182,7 +280,7 @@ public class Main {
 
 
 
-        }
+        }*/
 
 
 
