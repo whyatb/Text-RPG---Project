@@ -626,6 +626,7 @@ public class Main {
 
                 case 3:
                     System.out.println("TRADER");
+                    Trader.tradeInitiate();
                     break;
             }
         }
