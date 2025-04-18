@@ -97,6 +97,9 @@ public class playerCharacter {
     public static void setWeaponDamage(double value) {
         stats[2] = value;
     }
+    public static void addWeaponDamage(double value){
+        value = value + stats[2];
+    }
 
     public static void setArmorValue(double value) {
         stats[3] = value;
