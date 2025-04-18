@@ -136,20 +136,20 @@ public class Main {
         for (int i = 0; i <= 14; i++) {
             //weighs the odds so there is a 80% chance to have either a combat or puzzle room
             //20% chance to show the trader menu
-           //int weight = (int) (Math.random() * 100);
-           //int roomSelect;
-           //if (weight < 80) {
-           //    roomSelect = (int) (Math.random() * 2) + 1;
-           //} else {
-           //    roomSelect = 3;
-           //}
-            int roomSelect = 1;
+           int weight = (int) (Math.random() * 100);
+           int roomSelect;
+           if (weight < 80) {
+               roomSelect = (int) (Math.random() * 2) + 1;
+           } else {
+               roomSelect = 3;
+           }
+
             //this switch statement is 1-3 and picks what type of room will be shown
             switch (roomSelect) {
                 case 1:
                     // picks a random puzzle room (there are 5 puzzles)
-                    //int puzzleRoomSelect = (int) (Math.random() * 5) + 1;
-                    int puzzleRoomSelect = 1; //TESTING STATEMENT
+                    int puzzleRoomSelect = (int) (Math.random() * 5) + 1;
+
                     System.out.println("Puzzle: " + puzzleRoomSelect);
                     // switch for all 5 of the puzzles
                     switch (puzzleRoomSelect) {
