@@ -467,7 +467,7 @@ public class Main {
                                     System.out.println("You look to your right and a swarm of rats is making a beeline to the room.");
 
                                     Combat c2 = new Combat(); // creates combat loop
-                                    c2.CombatLoop(2); // you'll assign the enemy here
+                                    c2.CombatLoop(5); // you'll assign the enemy here
 
                                     if (!running) {
                                         System.out.println("The rats were too much... You fall amidst fur and teeth.");
@@ -485,7 +485,7 @@ public class Main {
                                     System.out.println("The rats scurry into the gutter. Now it’s just you and a battered, teary-eyed goblin.");
 
                                     Combat c3 = new Combat(); // combat with weakened goblin
-                                    c3.CombatLoop(3); // again, you handle the enemy logic
+                                    c3.CombatLoop(6); // again, you handle the enemy logic
 
                                     if (!running) {
                                         System.out.println("You fall to a goblin already half-defeated. A tragic end.");
@@ -498,8 +498,8 @@ public class Main {
                                 case 3:
                                     System.out.println("You strike with haste.");
 
-                                    Combat c4 = new Combat(); // this assumes some version of the goblin/rats is still present
-                                    c4.CombatLoop(4);
+                                    Combat c4 = new Combat();
+                                    c4.CombatLoop(7);
 
                                     if (!running) {
                                         System.out.println("You wonder how you lost to a weakened goblin. You draw your final breath.");
@@ -533,7 +533,7 @@ public class Main {
                             // (Insert full room description and flavor text as needed)
 
                             Combat titan1 = new Combat();
-                            titan1.CombatLoop(2); // Titan enemy
+                            titan1.CombatLoop(4); // Titan enemy
 
                             if (!running) {
                                 System.out.println("As the titan swings down, breaking your sword in half and pummeling you into the ground.\nYour blood flows in between the cracks of the flow and contrasts with the green moss.");
@@ -548,7 +548,7 @@ public class Main {
                             System.out.println("When you enter a room it is expansive.\nRed curtains drape from the ceiling and a throne sits upon an elevated throne.\nA skeleton resides in the throne.\nBy the side of the throne a suit of armor rests kneeling.\nBehind the throne a set of stairs continues upward.\nThe suit of armor starts to come to life and raises up with sword in hand.");
 
                             Combat knight = new Combat();
-                            knight.CombatLoop(3); // Knight enemy
+                            knight.CombatLoop(2); // Knight enemy
 
                             if (!running) {
                                 System.out.println("You fall to the ground impaled. In your dying light you see the knight return to kneel.");
@@ -563,7 +563,7 @@ public class Main {
                             System.out.println("You step into what once may have been a dining hall.\nA long, rotting table stretches across the room, filled with moldy dishes and broken goblets.\nA chandelier swings gently above, though there’s no wind.\nOn further inspection a goblin is holding onto the chandelier.");
 
                             Combat goblin1 = new Combat();
-                            goblin1.CombatLoop(4); // Goblin enemy
+                            goblin1.CombatLoop(1); // Goblin enemy
 
                             if (!running) {
                                 System.out.println("The goblin is alive. You are dead. However it seems displeased.\nIt grabs a rotted apple and tries to stuff into your soon to be lifeless mouth.\nA tear forms on its eye as you draw your final breath.");
@@ -594,7 +594,7 @@ public class Main {
                                     System.out.println("Oh but above you see just the most dazzling chandelier hanging above you.");
 
                                     Combat ogre = new Combat();
-                                    ogre.CombatLoop(5);
+                                    ogre.CombatLoop(3);
 
                                     if (!running) {
                                         System.out.println("You fall to the ground. Your head facing the chandelier now broken and barely lit lying on the floor. A dying smile is lit by a dying light.");
@@ -612,7 +612,7 @@ public class Main {
                                     System.out.println("Before you know it, you are face to face with the Ogre.");
 
                                     Combat ogre = new Combat();
-                                    ogre.CombatLoop(5);
+                                    ogre.CombatLoop(3);
 
                                     if (!running) {
                                         System.out.println("You fall to the ground. Your head facing the chandelier now broken and barely lit lying on the floor. A dying smile is lit by a dying light.");
@@ -694,7 +694,7 @@ public class Main {
                                         if (subChoice == 1) {
                                             System.out.println("You smash the miniature house and table—infuriating the goblin!");
                                             Combat goblin2 = new Combat();
-                                            goblin2.CombatLoop(6);
+                                            goblin2.CombatLoop(1);
 
                                             if (!running) {
                                                 System.out.println("The goblin leaps and bites your neck. Blood pools on the wooden floor...");
@@ -763,7 +763,7 @@ public class Main {
                                         if (subChoice7 == 1) {
                                             System.out.println("You brace yourself and fight the titan head-on.");
                                             Combat titan2 = new Combat();
-                                            titan2.CombatLoop(7);
+                                            titan2.CombatLoop(4);
 
                                             if (!running) {
                                                 System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");
@@ -786,7 +786,7 @@ public class Main {
                                 } else if (choice7 == 3) {
                                     System.out.println("You recklessly rush the titan. It moves fast—faster than you expected!");
                                     Combat titan2 = new Combat();
-                                    titan2.CombatLoop(7);
+                                    titan2.CombatLoop(4);
 
                                     if (!running) {
                                         System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");

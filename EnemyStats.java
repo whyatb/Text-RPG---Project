@@ -7,30 +7,38 @@ public class EnemyStats{
     public static double goblinLife(){
         return Math.floor(LIFE * .75);
     }
-
     public static double goblinDamage(){
         return Math.floor(DAMAGE * .75);
     }
 
+
     public static double knightLife(){
         return Math.floor(LIFE * 1);
     }
-
     public static double knightDamage(){
         return Math.floor(DAMAGE * 1);
     }
 
+
     public static double ogreLife(){
         return Math.floor(LIFE * 1.5);
     }
-
     public static double ogreDamage(){
         return Math.floor(DAMAGE * 1.25);
     }
 
-    public static double titanLife(){ return Math.floor(LIFE * 2);}
 
+    public static double titanLife(){ return Math.floor(LIFE * 2);}
     public static double titanDamage(){ return Math.floor(DAMAGE * 1.75);}
+
+    public static double ratSwarmLife(){ return Math.floor(LIFE * 1);}
+    public static double ratSwarmDamage(){ return Math.floor(DAMAGE  *.2);}
+
+    public static double beatenGoblinLife(){ return Math.floor(LIFE * .5);}
+    public static double beatenGoblinDamage(){ return Math.floor(DAMAGE  *.7);}
+
+    public static double ratCoveredGoblinLife(){ return Math.floor(LIFE * 1.2);}
+    public static double ratCoveredGoblinDamage(){ return Math.floor(DAMAGE  * .4);}
 
 
 

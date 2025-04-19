@@ -78,11 +78,28 @@ public class Combat{
                 enemyLife = EnemyStats.ogreLife();
                 enemyDamage = EnemyStats.ogreDamage();
                 enemyName = "Ogre";
+                break;
 
             case 4:
                 enemyLife = EnemyStats.titanLife();
                 enemyDamage = EnemyStats.titanDamage();
                 enemyName = "Titan";
+                break;
+            case 5:
+                enemyLife = EnemyStats.ratSwarmLife();
+                enemyDamage = EnemyStats.ratSwarmDamage();
+                enemyName = "Rat Swarm";
+                break;
+            case 6:
+                enemyLife = EnemyStats.beatenGoblinLife();
+                enemyDamage = EnemyStats.beatenGoblinDamage();
+                enemyName = "Beaten Goblin";
+                break;
+            case 7:
+                enemyLife = EnemyStats.ratCoveredGoblinLife();
+                enemyDamage = EnemyStats.ratCoveredGoblinDamage();
+                enemyName = "Rat Covered Goblin";
+                break;
         }
 
         System.out.println("You come upon a " + enemyName);
@@ -134,10 +151,6 @@ public class Combat{
                     sc.nextLine();
                 }
             }while(!correctInput);
-
-
         }while (IN_COMBAT);
-
-
     }
 }
