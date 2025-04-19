@@ -129,11 +129,3 @@ public class playerCharacter {
     }
 }
 
-/*
-Stat Descriptions:
-- Strength is the amount of damage you can do (1 str = 1 damage, 2 str = 2 damage, etc...)
-- Life is the amount of health you have multiplied by 5 (1 life = 5 health, 2 life = 10 health, etc...)
-- Weapon Damage is addition damage added onto your strength (1 weapon damage/1 str = 2 damage, 2 weapon damage/2 str = 4 damage, etc...)
-- Armor Value is a flat reduction to damage taken (you take damage - armorValue = damageTaken)
-- Gold is a resource that can be used to buy items
-*/
