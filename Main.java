@@ -381,7 +381,7 @@ public class Main {
                                 System.out.println("You wrap it around yourself securely and take your leave.");
                             }
                             else if (puzzle4Menu == 3) {
-                                System.out.println("Burn the rug. Burn the rug. Burn the rug...");
+                                System.out.println("Burn the rug, burn the rug, burn the rug.\nThese thoughts cloud your judgment.\nA smile settles upon your face and takes this rug and without hesitation chuck it into the fire.\nA mighty squawk is heard and it fills you with strength.\nYou gallantly exit the mighty warmth you were a part of. ");
                                 System.out.println("These thoughts cloud your judgment.");
                                 System.out.println("A smile settles upon your face as you chuck the rug into the fire.");
                                 System.out.println("A mighty squawk is heard and it fills you with strength.");
@@ -529,29 +529,29 @@ public class Main {
 
                             break;
                         case 2:
-                            System.out.println("You enter a room. The walls have a mossy overgrowth...");
+                            System.out.println("You enter a room. The walls have a mossy overgrowth.\nA nice wooden door leads elsewhere.\nInsects are roaming about and a large torch stands above it illuminating the entire room.\nAcross from the door however lies a titan.\nThe moss covers it and it seems to have been immoble for quite some time.");
                             // (Insert full room description and flavor text as needed)
 
                             Combat titan1 = new Combat();
                             titan1.CombatLoop(2); // Titan enemy
 
                             if (!running) {
-                                System.out.println("The titan swing down, breaking your sword in half and pummeling you into the ground...");
+                                System.out.println("As the titan swings down, breaking your sword in half and pummeling you into the ground.\nYour blood flows in between the cracks of the flow and contrasts with the green moss.");
                                 return;
                             } else {
-                                System.out.println("The titan crumbles with your last strike. Its structural integrity is weakened by its inactivity...");
+                                System.out.println("The titan crumbles with your last strike.\nIts structural integrity is weakened by its inactivity.\nYou walk away accomplished.");
                             }
 
                             break;
 
                         case 3:
-                            System.out.println("You enter a grand room draped with red curtains. A throne rests high with a skeleton...");
+                            System.out.println("When you enter a room it is expansive.\nRed curtains drape from the ceiling and a throne sits upon an elevated throne.\nA skeleton resides in the throne.\nBy the side of the throne a suit of armor rests kneeling.\nBehind the throne a set of stairs continues upward.\nThe suit of armor starts to come to life and raises up with sword in hand.");
 
                             Combat knight = new Combat();
                             knight.CombatLoop(3); // Knight enemy
 
                             if (!running) {
-                                System.out.println("You fall to the ground impaled. In your dying light you see the knight return to kneel...");
+                                System.out.println("You fall to the ground impaled. In your dying light you see the knight return to kneel.");
                                 return;
                             } else {
                                 System.out.println("You knock the knight’s helmet off. It falls to the ground as you ascend the staircase.");
@@ -560,64 +560,249 @@ public class Main {
                             break;
 
                         case 4:
-                            System.out.println("You enter a decaying dining hall, rot and mold surrounding a goblin on a chandelier...");
+                            System.out.println("You step into what once may have been a dining hall.\nA long, rotting table stretches across the room, filled with moldy dishes and broken goblets.\nA chandelier swings gently above, though there’s no wind.\nOn further inspection a goblin is holding onto the chandelier.");
 
                             Combat goblin1 = new Combat();
                             goblin1.CombatLoop(4); // Goblin enemy
 
                             if (!running) {
-                                System.out.println("The goblin grabs a rotted apple and tries to stuff it into your soon-to-be lifeless mouth...");
+                                System.out.println("The goblin is alive. You are dead. However it seems displeased.\nIt grabs a rotted apple and tries to stuff into your soon to be lifeless mouth.\nA tear forms on its eye as you draw your final breath.");
                                 return;
                             } else {
-                                System.out.println("The goblin joins the rotted food as its entrails align with the platter...");
+                                System.out.println("The goblin joins the rotted food as its entrails align with the platter.\nNothing changes in this room; it all looks as inhospitable as it did with life.");
                             }
 
                             break;
 
                         case 5:
-                            System.out.println("A boulder flies at you as you enter the room. An ogre stands snarling behind it...");
+                            System.out.println("You enter a room. A surprising warmth clings to your skin and makes you feel embraced.");
+                            System.out.println("You look around and observe the -A boulder is heading your way-");
 
-                            Combat ogre = new Combat();
-                            ogre.CombatLoop(5); // Ogre enemy
+                            while (true) {
+                                System.out.println("\nWhat do you do?");
+                                System.out.println("1. Dodge");
+                                System.out.println("2. Address the Ogre");
+                                System.out.println("3. Keep staring at the chandelier");
+                                System.out.println("4. Evade");
 
-                            if (!running) {
-                                System.out.println("Your head faces the broken chandelier on the floor. A dying smile lit by a dying light...");
-                                return;
-                            } else {
-                                System.out.println("You pierce the ogre’s skull mid-swing. The moon glows behind the chandelier as you rest briefly.");
+                                int choice = s.nextInt();
+                                s.nextLine(); // Consume newline
+
+                                if (choice == 1) { // Dodge
+                                    System.out.println("You jump to the side avoiding the boulder.");
+                                    System.out.println("At the end of the room an ogre is snarling at you, beating his chest with one arm, and his other arm has just such large muscles flexed which happen to be holding another boulder.");
+                                    System.out.println("Oh but above you see just the most dazzling chandelier hanging above you.");
+
+                                    Combat ogre = new Combat();
+                                    ogre.CombatLoop(5);
+
+                                    if (!running) {
+                                        System.out.println("You fall to the ground. Your head facing the chandelier now broken and barely lit lying on the floor. A dying smile is lit by a dying light.");
+                                        return;
+                                    } else {
+                                        System.out.println("You pierce the ogre’s skull mid-swing. The moon glows behind the chandelier as you rest briefly.");
+                                    }
+                                    break;
+
+                                } else if (choice == 2) { // Address the Ogre
+                                    System.out.println("“Stop it,” you scream.");
+                                    System.out.println("The ogre is mute and its response is to throw a boulder at you. You jump to the side avoiding it.");
+                                    System.out.println("“Please listen,” you shout. A boulder is thrown again—this time the boulder hits the chandelier.");
+                                    System.out.println("Devastation unfolds, and an anger like you’ve never known before washes over you.");
+                                    System.out.println("Before you know it, you are face to face with the Ogre.");
+
+                                    Combat ogre = new Combat();
+                                    ogre.CombatLoop(5);
+
+                                    if (!running) {
+                                        System.out.println("You fall to the ground. Your head facing the chandelier now broken and barely lit lying on the floor. A dying smile is lit by a dying light.");
+                                        return;
+                                    } else {
+                                        System.out.println("The anger of you still just won’t go away.");
+                                        System.out.println("A lifeless corpse on the ground. An hour passes. A lifeless corpse now hangs in place of the chandelier.");
+                                    }
+                                    break;
+
+                                } else if (choice == 3) { // Stare at chandelier
+                                    System.out.println("Your eyes transfixed, you wonder how this chandelier still stands.");
+                                    System.out.println("With a boulder-tossing ogre denting the walls and floors, how does it stay lit?");
+                                    System.out.println("You’ve just been accepting things as is—but really, how does this dungeon operate?");
+                                    System.out.println("Most importantly, why are you so drawn to the light?");
+                                    System.out.println("These questions don’t last long as a boulder soon hits you.");
+
+                                    double tempLife = playerCharacter.getLife();
+                                    playerCharacter.setLife(tempLife+5);
+
+                                    System.out.println("You fall to the ground and have taken damage.");
+                                    System.out.println("You remain lying just looking up at the glow.");
+                                    System.out.println("The ogre comes over to view your corpse...");
+                                    System.out.println("His fist raises into the air to slam down.");
+                                    System.out.println("The sun is blocked by the moon.");
+                                    System.out.println("You raise your sword—his fist jams into it.");
+                                    System.out.println("The ogre writhes in pain, swinging you around. You jump forward...");
+                                    System.out.println("The sword pierces its skull, killing it. You fall with the ogre—his body cushions your fall.");
+                                    System.out.println("You now lay on the moon with a full view of the sun. After a brief repose, you get up and head out of the room.");
+                                    break;
+
+                                } else if (choice == 4) { // Evade
+                                    System.out.println("You start running to the right intuitively and there the door stands.");
+                                    System.out.println("You open it and hear a large crash behind you. A piece of wood goes flying past.");
+                                    System.out.println("You look back and see a destroyed door and a boulder now resides in its place.");
+                                    System.out.println("The space above the boulder allows the nice light of the chandelier to come through.");
+                                    break;
+
+                                } else {
+                                    System.out.println("Invalid choice. Try again.");
+                                }
                             }
 
                             break;
+
 
                         case 6:
-                            System.out.println("You enter a wooden room. A goblin watches over a mysterious miniature house on a table...");
+                            System.out.println("You enter a room. The walls, floor, and ceiling are all a dark rich wood. There's a door directly across from you.");
+                            System.out.println("A single beam of light shines from above onto a small wooden table in the center of the room.");
+                            System.out.println("On that table sits a miniature house with two small doors... it looks oddly familiar.");
 
-                            Combat goblin2 = new Combat();
-                            goblin2.CombatLoop(6); // Goblin enemy
+                            while (true) {
+                                System.out.println("\nWhat do you do?");
+                                System.out.println("1. Evade - Run to the exit without engaging.");
+                                System.out.println("2. Start banging the walls, looking for an enemy.");
+                                System.out.println("3. Eat the small room.");
+                                System.out.println("4. Leave quietly to reflect.");
 
-                            if (!running) {
-                                System.out.println("The goblin bites your neck. Blood quickly pools onto the cold wooden floor...");
-                                return;
-                            } else {
-                                System.out.println("You leave with satisfaction after defeating the enraged goblin.");
+                                int choice6 = s.nextInt();
+                                s.nextLine(); // Clear newline
+
+                                if (choice6 == 1) {
+                                    System.out.println("You want nothing to do with this. You sprint to the door without looking back.");
+                                    break;
+
+                                } else if (choice6 == 2) {
+                                    System.out.println("You begin banging on the walls, yelling 'Come out, come out!'");
+                                    System.out.println("Suddenly, a square section of the wall flips and smacks you. You crouch and see a goblin!");
+                                    System.out.println("It sprints out, checks the table protectively, then stares at you, poised.");
+
+                                    while (true) {
+                                        System.out.println("\nWhat do you do?");
+                                        System.out.println("1. Attack the goblin");
+                                        System.out.println("2. Leave and reflect");
+
+                                        int subChoice = s.nextInt();
+                                        s.nextLine();
+
+                                        if (subChoice == 1) {
+                                            System.out.println("You smash the miniature house and table—infuriating the goblin!");
+                                            Combat goblin2 = new Combat();
+                                            goblin2.CombatLoop(6);
+
+                                            if (!running) {
+                                                System.out.println("The goblin leaps and bites your neck. Blood pools on the wooden floor...");
+                                                return;
+                                            } else {
+                                                System.out.println("You feel satisfied that your whims were answered. You leave the room.");
+                                            }
+                                            break;
+
+                                        } else if (subChoice == 2) {
+                                            System.out.println("A strange guilt washes over you. You decide to leave and reflect.");
+                                            break;
+                                        } else {
+                                            System.out.println("Invalid option. Try again.");
+                                        }
+                                    }
+                                    break;
+
+                                } else if (choice6 == 3) {
+                                    System.out.println("You stare at the small replica. Something unhinges in your brain.");
+                                    System.out.println("You scoop up the small room and eat it. It's oddly sweet with a woody aroma.");
+                                    System.out.println("You hear banging from within the walls, but feel full and calm. You walk away.");
+                                    break;
+
+                                } else if (choice6 == 4) {
+                                    System.out.println("You feel guilt creep in. Better to leave than mess with this madness. You exit the room.");
+                                    break;
+
+                                } else {
+                                    System.out.println("Invalid input. Choose again.");
+                                }
                             }
 
                             break;
+
 
                         case 7:
-                            System.out.println("You open a musty door. A waiting titan watches in silence...");
+                            System.out.println("You push open a resistant door. A musty scent fills your nose as grey solemn bricks enclose the room.");
+                            System.out.println("A titan waits ahead in silence, its frame unmoving but ready.");
 
-                            Combat titan2 = new Combat();
-                            titan2.CombatLoop(7); // Titan again, different scenario
+                            while (true) {
+                                System.out.println("\nWhat do you do?");
+                                System.out.println("1. Evade and flee immediately.");
+                                System.out.println("2. Taunt the titan and begin a proper fight.");
+                                System.out.println("3. Try to rush past it recklessly.");
 
-                            if (!running) {
-                                System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");
-                                return;
-                            } else {
-                                System.out.println("You manage to defeat the titan. Valor washes over you.");
+                                int choice7 = s.nextInt();
+                                s.nextLine(); // Clear newline
+
+                                if (choice7 == 1) {
+                                    System.out.println("You run as fast as you can. The titan hurls a blow, but you’re simply too fast.");
+                                    System.out.println("You make it behind it and escape into a dark tunnel.");
+                                    break;
+
+                                } else if (choice7 == 2) {
+                                    System.out.println("You charge up and then retreat, goading it. The titan begins marching your way...");
+
+                                    while (true) {
+                                        System.out.println("\nDo you:");
+                                        System.out.println("1. Stand your ground and fight");
+                                        System.out.println("2. Attempt to flee again");
+
+                                        int subChoice7 = s.nextInt();
+                                        s.nextLine();
+
+                                        if (subChoice7 == 1) {
+                                            System.out.println("You brace yourself and fight the titan head-on.");
+                                            Combat titan2 = new Combat();
+                                            titan2.CombatLoop(7);
+
+                                            if (!running) {
+                                                System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");
+                                                return;
+                                            } else {
+                                                System.out.println("You manage to defeat the titan. Valor washes over you. You feel strong. You move on.");
+                                            }
+                                            break;
+
+                                        } else if (subChoice7 == 2) {
+                                            System.out.println("You dodge and sprint. Once again, you're fast enough to make it to the tunnel.");
+                                            break;
+
+                                        } else {
+                                            System.out.println("Invalid choice. Try again.");
+                                        }
+                                    }
+                                    break;
+
+                                } else if (choice7 == 3) {
+                                    System.out.println("You recklessly rush the titan. It moves fast—faster than you expected!");
+                                    Combat titan2 = new Combat();
+                                    titan2.CombatLoop(7);
+
+                                    if (!running) {
+                                        System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");
+                                        return;
+                                    } else {
+                                        System.out.println("You somehow manage to defeat the titan. Valor surges through your veins. You continue onward.");
+                                    }
+                                    break;
+
+                                } else {
+                                    System.out.println("Invalid input. Choose again.");
+                                }
                             }
 
                             break;
+
 
                     }
 

@@ -32,6 +32,8 @@ public class EnemyStats{
 
     public static double titanDamage(){ return Math.floor(DAMAGE * 1.75);}
 
+
+
 }
 
 //TEMP FOR RANDOM TEST
