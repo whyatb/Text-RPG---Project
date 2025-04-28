@@ -31,10 +31,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner  s = new Scanner(System.in);
 
+        Random rand = new Random();
+        int goldGained;
+
+
+
 
         // main running to give a way to end the game while in map
     boolean running = true;
     while (running) {
+
         //loops 15 random rooms
         for (int i = 0; i <= 14; i++) {
             //weighs the odds so there is a 80% chance to have either a combat or puzzle room
@@ -370,7 +376,8 @@ public class Main {
                                     System.out.println("You look to your right and a swarm of rats is making a beeline to the room.");
 
                                     Combat c2 = new Combat(); // creates combat loop
-                                    c2.CombatLoop(5); // you'll assign the enemy here
+                                    c2.CombatLoop(5);// you'll assign the enemy here
+                                    running= c2.afterCombatChecks();
 
                                     if (!running) {
                                         System.out.println("The rats were too much... You fall amidst fur and teeth.");
@@ -378,6 +385,10 @@ public class Main {
                                     }
 
                                     System.out.println("With the swarm dispersed, you make your way toward the door and exit.");
+                                    goldGained = rand.nextInt(1,11);
+                                    System.out.println("You gained "+goldGained+" gold!");
+                                    playerCharacter.addGold(goldGained);
+                                    playerCharacter.levelUp();
                                     break;
 
                                 case 2:
@@ -389,6 +400,7 @@ public class Main {
 
                                     Combat c3 = new Combat(); // combat with weakened goblin
                                     c3.CombatLoop(6); // again, you handle the enemy logic
+
 
                                     if (!running) {
                                         System.out.println("You fall to a goblin already half-defeated. A tragic end.");
@@ -403,6 +415,7 @@ public class Main {
 
                                     Combat c4 = new Combat();
                                     c4.CombatLoop(7);
+
 
                                     if (!running) {
                                         System.out.println("You wonder how you lost to a weakened goblin. You draw your final breath.");
@@ -718,6 +731,14 @@ public class Main {
                     break;
             }
         }
+        if (running) {
+
+            Combat Boss = new Combat();
+            Boss.CombatLoop(8);
+            running= Boss.afterCombatChecks();
+        }
+
+        running=false;
     }
     }
 }

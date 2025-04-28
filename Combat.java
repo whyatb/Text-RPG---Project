@@ -8,6 +8,7 @@ public class Combat{
     private static boolean deathCheck = false;
     private static boolean evaded = false;
     private static boolean enemySlain = false;
+    private static boolean finalBossBool=false;
 
     public boolean afterCombatChecks(){
         Scanner  s = new Scanner(System.in);
@@ -17,11 +18,14 @@ public class Combat{
         boolean slainEnemy = Combat.deadEnemyCheck();
         if(checkForDeath){
             running = false;
-            playerCharacter.gameOverText(1);
         }
         else if (evasionCheck){
             System.out.println("You evade the enemy entirely, running out of the room without a fight.");
             System.out.println("You feel as if you missed out on something by doing so...");
+        }
+        else if (slainEnemy&&finalBossBool){
+            System.out.println("You have slain the Final Boss of this place.");
+            System.out.println("As you exit the dungeon, sunlight streams across your face.");
         }
         else if (slainEnemy){
             System.out.println("You survived the attack. Your foe has dropped...");
@@ -30,8 +34,6 @@ public class Combat{
             System.out.println("You gained "+goldGained+" gold!");
             playerCharacter.addGold(goldGained);
             playerCharacter.levelUp();
-
-
         }
         return running;
     }
@@ -51,6 +53,8 @@ public class Combat{
     public void CombatLoop(int enemyChosen){
 
         Scanner sc = new Scanner(System.in);
+
+
 
         double enemyLife = 0;
         double enemyDamage = 0;
@@ -100,9 +104,23 @@ public class Combat{
                 enemyDamage = EnemyStats.ratCoveredGoblinDamage();
                 enemyName = "Rat Covered Goblin";
                 break;
+            case 8:
+                enemyLife=EnemyStats.finalBossLife();
+                enemyDamage=EnemyStats.finalBossDamage();
+                enemyName="Boss";
         }
 
-        System.out.println("You come upon a " + enemyName);
+        int tempLife=(int)EnemyStats.getLIFE();
+        int finalBossCheck = tempLife*4;
+        if (enemyLife<=finalBossCheck){
+            System.out.println("You come upon a " + enemyName);
+        }
+        else{
+            finalBossBool=true;
+            System.out.println("You enter the room of the Final Boss.");
+            System.out.println("Shivers run down your spine as you confront what seems to be an insurmountable enemy.");
+        }
+
 
         do{
             //System.out.println("Testing: " + playerCharacter.getLife() + "..." + enemyLife);

@@ -15,17 +15,18 @@ public class playerCharacter {
     // Array to store descriptions for each stat
     private String[] statDescription = {STRENGTH, LIFE, WEAPON_DAMAGE, ARMOR_VALUE, GOLD};
 
-    public static void gameOverText(int input){
-        switch (input){
-            case 1:
-                System.out.println("Insert combat gameovertext");
-                break;
-            case 2:
-                System.out.println("Inset puzzle gameovertext");
-                break;
-            //Insert more ways to game over as needed
-        }
-    }
+//    Unused game over method
+//    public static void gameOverText(int input){
+//        switch (input){
+//            case 1:
+//                System.out.println("Insert combat gameovertext");
+//                break;
+//            case 2:
+//                System.out.println("Inset puzzle gameovertext");
+//                break;
+//            Insert more ways to game over as needed
+//        }
+//    }
 
     public static void levelUp(){
         Scanner s = new Scanner(System.in);

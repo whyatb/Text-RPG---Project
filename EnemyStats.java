@@ -40,6 +40,12 @@ public class EnemyStats{
     public static double ratCoveredGoblinLife(){ return Math.floor(LIFE * 1.2);}
     public static double ratCoveredGoblinDamage(){ return Math.floor(DAMAGE  * .4);}
 
+    public static double finalBossLife(){return Math.floor(LIFE * 5);}
+    public static double finalBossDamage(){return Math.floor(DAMAGE * 5);}
+
+    public static double getLIFE(){return LIFE;}
+    public static double getDAMAGE(){return DAMAGE;}
+
 
 
 }
