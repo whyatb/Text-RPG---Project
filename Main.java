@@ -47,7 +47,7 @@ public class Main {
             //20% chance to show the trader menu
            int weight = (int) (Math.random() * 100);
            int roomSelect;
-           if (weight < 80) {
+           if (weight < 90) {
                roomSelect = (int) (Math.random() * 2) + 1;
            } else {
                roomSelect = 3;
@@ -59,7 +59,7 @@ public class Main {
                     // picks a random puzzle room (there are 5 puzzles)
                     int puzzleRoomSelect = (int) (Math.random() * 5) + 1;
 
-                    System.out.println("Puzzle: " + puzzleRoomSelect);
+
                     // switch for all 5 of the puzzles
                     switch (puzzleRoomSelect) {
                         case 1: // puzzle 1: ect...
@@ -346,7 +346,7 @@ public class Main {
                 case 2:
                     int combatRoomSelect = (int) (Math.random() * 7) + 1;
 
-                    System.out.println("Combat: " + combatRoomSelect);
+
 
                     switch (combatRoomSelect) {
                         case 1:
