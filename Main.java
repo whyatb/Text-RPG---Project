@@ -400,13 +400,16 @@ public class Main {
 
                                     Combat c3 = new Combat(); // combat with weakened goblin
                                     c3.CombatLoop(6); // again, you handle the enemy logic
-
+                                    running=c3.afterCombatChecks();
 
                                     if (!running) {
                                         System.out.println("You fall to a goblin already half-defeated. A tragic end.");
                                         return;
                                     }
-
+                                    goldGained = rand.nextInt(1,11);
+                                    System.out.println("You gained "+goldGained+" gold!");
+                                    playerCharacter.addGold(goldGained);
+                                    playerCharacter.levelUp();
                                     System.out.println("You dispatch the pitiful goblin. The door creaks open, and you walk through.");
                                     break;
 
@@ -415,13 +418,16 @@ public class Main {
 
                                     Combat c4 = new Combat();
                                     c4.CombatLoop(7);
-
+                                    running=c4.afterCombatChecks();
 
                                     if (!running) {
                                         System.out.println("You wonder how you lost to a weakened goblin. You draw your final breath.");
                                         return;
                                     }
-
+                                    goldGained = rand.nextInt(1,11);
+                                    System.out.println("You gained "+goldGained+" gold!");
+                                    playerCharacter.addGold(goldGained);
+                                    playerCharacter.levelUp();
                                     System.out.println("You quickly dispatch the rat-strewn goblin and take your leave through the door.");
                                     break;
 
@@ -450,11 +456,16 @@ public class Main {
 
                             Combat titan1 = new Combat();
                             titan1.CombatLoop(4); // Titan enemy
+                            running=titan1.afterCombatChecks();
 
                             if (!running) {
                                 System.out.println("As the titan swings down, breaking your sword in half and pummeling you into the ground.\nYour blood flows in between the cracks of the flow and contrasts with the green moss.");
                                 return;
                             } else {
+                                goldGained = rand.nextInt(1,11);
+                                System.out.println("You gained "+goldGained+" gold!");
+                                playerCharacter.addGold(goldGained);
+                                playerCharacter.levelUp();
                                 System.out.println("The titan crumbles with your last strike.\nIts structural integrity is weakened by its inactivity.\nYou walk away accomplished.");
                             }
 
@@ -465,11 +476,16 @@ public class Main {
 
                             Combat knight = new Combat();
                             knight.CombatLoop(2); // Knight enemy
+                            running=knight.afterCombatChecks();
 
                             if (!running) {
                                 System.out.println("You fall to the ground impaled. In your dying light you see the knight return to kneel.");
                                 return;
                             } else {
+                                goldGained = rand.nextInt(1,11);
+                                System.out.println("You gained "+goldGained+" gold!");
+                                playerCharacter.addGold(goldGained);
+                                playerCharacter.levelUp();
                                 System.out.println("You knock the knight’s helmet off. It falls to the ground as you ascend the staircase.");
                             }
 
@@ -480,11 +496,16 @@ public class Main {
 
                             Combat goblin1 = new Combat();
                             goblin1.CombatLoop(1); // Goblin enemy
+                            running=goblin1.afterCombatChecks();
 
                             if (!running) {
                                 System.out.println("The goblin is alive. You are dead. However it seems displeased.\nIt grabs a rotted apple and tries to stuff into your soon to be lifeless mouth.\nA tear forms on its eye as you draw your final breath.");
                                 return;
                             } else {
+                                goldGained = rand.nextInt(1,11);
+                                System.out.println("You gained "+goldGained+" gold!");
+                                playerCharacter.addGold(goldGained);
+                                playerCharacter.levelUp();
                                 System.out.println("The goblin joins the rotted food as its entrails align with the platter.\nNothing changes in this room; it all looks as inhospitable as it did with life.");
                             }
 
@@ -511,11 +532,16 @@ public class Main {
 
                                     Combat ogre = new Combat();
                                     ogre.CombatLoop(3);
+                                    running= ogre.afterCombatChecks();
 
                                     if (!running) {
                                         System.out.println("You fall to the ground. Your head facing the chandelier now broken and barely lit lying on the floor. A dying smile is lit by a dying light.");
                                         return;
                                     } else {
+                                        goldGained = rand.nextInt(1,11);
+                                        System.out.println("You gained "+goldGained+" gold!");
+                                        playerCharacter.addGold(goldGained);
+                                        playerCharacter.levelUp();
                                         System.out.println("You pierce the ogre’s skull mid-swing. The moon glows behind the chandelier as you rest briefly.");
                                     }
                                     break;
@@ -529,11 +555,16 @@ public class Main {
 
                                     Combat ogre = new Combat();
                                     ogre.CombatLoop(3);
+                                    running= ogre.afterCombatChecks();
 
                                     if (!running) {
                                         System.out.println("You fall to the ground. Your head facing the chandelier now broken and barely lit lying on the floor. A dying smile is lit by a dying light.");
                                         return;
                                     } else {
+                                        goldGained = rand.nextInt(1,11);
+                                        System.out.println("You gained "+goldGained+" gold!");
+                                        playerCharacter.addGold(goldGained);
+                                        playerCharacter.levelUp();
                                         System.out.println("The anger of you still just won’t go away.");
                                         System.out.println("A lifeless corpse on the ground. An hour passes. A lifeless corpse now hangs in place of the chandelier.");
                                     }
@@ -611,11 +642,16 @@ public class Main {
                                             System.out.println("You smash the miniature house and table—infuriating the goblin!");
                                             Combat goblin2 = new Combat();
                                             goblin2.CombatLoop(1);
+                                            running= goblin2.afterCombatChecks();
 
                                             if (!running) {
                                                 System.out.println("The goblin leaps and bites your neck. Blood pools on the wooden floor...");
                                                 return;
                                             } else {
+                                                goldGained = rand.nextInt(1,11);
+                                                System.out.println("You gained "+goldGained+" gold!");
+                                                playerCharacter.addGold(goldGained);
+                                                playerCharacter.levelUp();
                                                 System.out.println("You feel satisfied that your whims were answered. You leave the room.");
                                             }
                                             break;
@@ -680,11 +716,16 @@ public class Main {
                                             System.out.println("You brace yourself and fight the titan head-on.");
                                             Combat titan2 = new Combat();
                                             titan2.CombatLoop(4);
+                                            running= titan2.afterCombatChecks();
 
                                             if (!running) {
                                                 System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");
                                                 return;
                                             } else {
+                                                goldGained = rand.nextInt(1,11);
+                                                System.out.println("You gained "+goldGained+" gold!");
+                                                playerCharacter.addGold(goldGained);
+                                                playerCharacter.levelUp();
                                                 System.out.println("You manage to defeat the titan. Valor washes over you. You feel strong. You move on.");
                                             }
                                             break;
@@ -703,11 +744,16 @@ public class Main {
                                     System.out.println("You recklessly rush the titan. It moves fast—faster than you expected!");
                                     Combat titan2 = new Combat();
                                     titan2.CombatLoop(4);
+                                    running= titan2.afterCombatChecks();
 
                                     if (!running) {
                                         System.out.println("Your legs are crushed. You regret not running—but you’re glad you can’t outrun death.");
                                         return;
                                     } else {
+                                        goldGained = rand.nextInt(1,11);
+                                        System.out.println("You gained "+goldGained+" gold!");
+                                        playerCharacter.addGold(goldGained);
+                                        playerCharacter.levelUp();
                                         System.out.println("You somehow manage to defeat the titan. Valor surges through your veins. You continue onward.");
                                     }
                                     break;
