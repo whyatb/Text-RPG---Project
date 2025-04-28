@@ -41,7 +41,7 @@ public class Main {
     boolean running = true;
     while (running) {
 
-        //loops 15 random rooms
+        //loops 15 random roomss
         for (int i = 0; i <= 14; i++) {
             //weighs the odds so there is a 80% chance to have either a combat or puzzle room
             //20% chance to show the trader menu
